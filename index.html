@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4e73df;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #2e59d9;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Marks Manager</h2>
+
+    <input type="text" id="name" placeholder="Enter Student Name">
+    <input type="number" id="mark1" placeholder="Enter Mark 1">
+    <input type="number" id="mark2" placeholder="Enter Mark 2">
+    <input type="number" id="mark3" placeholder="Enter Mark 3">
+
+    <button onclick="addStudent()">Calculate Average</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<script>
+    let students = [];
+
+    function addStudent() {
+        let name = document.getElementById("name").value;
+        let m1 = Number(document.getElementById("mark1").value);
+        let m2 = Number(document.getElementById("mark2").value);
+        let m3 = Number(document.getElementById("mark3").value);
+
+        let student = {
+            name: name,
+            marks: [m1, m2, m3]
+        };
+
+        students.push(student);
+
+        let total = m1 + m2 + m3;
+        let average = total / 3;
+
+        document.getElementById("output").innerHTML =
+            "<strong>Name:</strong> " + name + "<br>" +
+            "<strong>Average:</strong> " + average.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
